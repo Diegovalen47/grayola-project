@@ -8,10 +8,7 @@ import { createClient } from '@/lib/supabase/server'
 export async function signup(data: { email: string, password: string }) {
   const supabase = await createClient()
 
-  const { error, data: signUpData } = await supabase.auth.signUp(data)
-
-  console.log('signUpData', signUpData)
-  console.log('error signup', error)
+  const { error } = await supabase.auth.signUp(data)
 
   if (error) {
     return { error: 'Error creating account' }

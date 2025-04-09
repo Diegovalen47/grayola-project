@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "border-none hover:text-primary/90 shadow-none bg-transparent text-primary",
       },
       color: {
         primary: "bg-primary text-primary-foreground shadow-(color:--color-primary)/30 hover:bg-primary/90",
@@ -40,7 +40,12 @@ const buttonVariants = cva(
       {
         variant: "outline",
         color: "primary",
-        className: "border-primary",
+        className: "bg-transparent border-primary/30 hover:bg-primary/10 text-primary/30",
+      },
+      {
+        variant: "link",
+        color: "primary",
+        className: "text-primary/30 hover:text-primary/90 shadow-none bg-transparent text-primary hover:shadow-none hover:underline hover:bg-transparent hover:translate-y-0 hover:cursor-pointer",
       },
     ],
   }

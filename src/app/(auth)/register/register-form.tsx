@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { EyeIcon, EyeOffIcon, KeyIcon, MailIcon } from "lucide-react"
+import { EyeIcon, EyeOffIcon, KeyIcon, Loader2, MailIcon } from "lucide-react"
 import { useState } from "react"
 import { Separator } from "@/components/ui/separator"
 import { signup } from "./actions"
@@ -49,7 +49,6 @@ export function RegisterForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
     if (values.password !== values.verifyPassword) {
       form.setError("verifyPassword", {
         message: "Passwords do not match.",
@@ -123,7 +122,7 @@ export function RegisterForm() {
         </div>
         <div className="mt-10 flex flex-col gap-4">
           <Button type="submit" className="w-full" color="secondary" disabled={isLoading}>
-            {isLoading ? "Creating account..." : "Create account"}
+            {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Create account"}
           </Button>
         </div>
         <div className="mb-6 mt-8 flex gap-4 items-center">
