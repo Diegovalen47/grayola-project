@@ -26,3 +26,16 @@ export async function login(data: { email: string, password: string }) {
   revalidatePath(`/${userProfile.role}`, 'layout')
   redirect(`/${userProfile.role}`)
 }
+
+export async function signup(data: { email: string, password: string }) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.auth.signUp(data)
+
+  if (error) {
+    return { error: 'Error creating account' }
+  }
+
+  revalidatePath('/email/message', 'layout')
+  redirect('/email/message')
+}

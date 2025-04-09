@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { useState } from "react"
-import { Loader2 } from "lucide-react"
 
 export default function LogOut() {
   const router = useRouter()
@@ -20,7 +19,7 @@ export default function LogOut() {
   }
 
   return (
-    <Button variant="link" onClick={handleLogout} disabled={isLoading} className="h-fit px-2">
+    <Button variant="link" onClick={handleLogout} disabled={isLoading} className="h-fit px-2 underline">
       Logout
     </Button>
   )
