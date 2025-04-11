@@ -33,7 +33,6 @@ export async function GET(request: NextRequest) {
       if (profileError) {
         redirect('/error')
       }
-  
       redirect(`/${userProfile[0].role}`)
     }
   }
