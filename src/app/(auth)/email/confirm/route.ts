@@ -17,17 +17,24 @@ export async function GET(request: NextRequest) {
       token_hash,
     })
 
+    
     if (!error) {
+      const { data, error: getUserError } = await supabase.auth.getUser()
+
+      if (getUserError) {
+        redirect('/error')
+      }
+
       const { data: userProfile, error: profileError } = await supabase
         .from('profile')
         .select('*')
-        .single()
+        .eq('id', data.user.id)
   
       if (profileError) {
         redirect('/error')
       }
   
-      redirect(`/${userProfile.role}`)
+      redirect(`/${userProfile[0].role}`)
     }
   }
 
