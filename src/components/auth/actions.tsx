@@ -14,17 +14,25 @@ export async function login(data: { email: string, password: string }) {
     return { error: "Invalid credentials" }
   }
 
+  const { data: user, error: userError } = await supabase.auth.getUser()
+
+  if (userError) {
+    return { error: "Error fetching user" }
+  }
+
   const { data: userProfile, error: profileError } = await supabase
     .from('profile')
     .select('*')
-    .single()
+    .eq('id', user.user.id)
 
   if (profileError) {
     return { error: "Error loggin in" }
   }
 
-  revalidatePath(`/${userProfile.role}`, 'layout')
-  redirect(`/${userProfile.role}`)
+  console.log('userProfile', userProfile)
+
+  revalidatePath(`/${userProfile![0].role}`, 'layout')
+  redirect(`/${userProfile![0].role}`)
 }
 
 export async function signup(data: { email: string, password: string }) {

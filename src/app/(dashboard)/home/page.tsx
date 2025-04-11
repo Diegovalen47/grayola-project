@@ -11,5 +11,14 @@ export default async function PrivatePage() {
     redirect('/login')
   }
 
-  return <p>Hello {data.user.email}</p>
+  const { data: userProfile, error: profileError } = await supabase
+    .from('profile')
+    .select('*')
+    .eq('id', data.user.id)
+
+  if (profileError) {
+    redirect('/error')
+  }
+
+  redirect(`/${userProfile![0].role}`)
 }

@@ -27,13 +27,13 @@ export default async function DashboardLayout({
   const { data: userProfile, error: profileError } = await supabase
     .from('profile')
     .select('*')
-    .single()
+    .eq('id', data.user.id)
 
   if (profileError) {
     redirect('/error')
   }
 
-  const Role = userProfile.role.charAt(0).toUpperCase() + userProfile.role.slice(1)
+  const Role = userProfile![0].role.charAt(0).toUpperCase() + userProfile![0].role.slice(1)
 
   return (
     <main className="flex items-center h-screen w-screen">
@@ -43,7 +43,7 @@ export default async function DashboardLayout({
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <p className="text-xs text-muted-foreground mt-4">
+          <p className="text-xs text-primary/50 mt-4">
             {Role}
           </p>
           <h3 className="text-primary font-bold mt-1">
@@ -54,11 +54,11 @@ export default async function DashboardLayout({
           <LogOut />
         </div>
       </div>
-      <div className="w-10/12 h-full pt-8 px-16">
+      <div className="w-10/12 h-screen flex flex-col max-h-screen overflow-hidden py-8 px-16">
         <h1 className="text-4xl font-bold">
           Hi, {Role}
         </h1>
-        <span className="text-sm">{data.user.email}</span>
+        <span className="text-sm text-primary/50">{data.user.email}</span>
         {children}
       </div>
     </main>
