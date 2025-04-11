@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import { type UseSupabaseUploadReturn } from '@/hooks/use-supabase-upload'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, File, Loader2, Upload, X } from 'lucide-react'
+import { CheckCircle, File, Upload, X } from 'lucide-react'
 import { createContext, type PropsWithChildren, useCallback, useContext } from 'react'
 
 export const formatBytes = (
@@ -65,6 +65,7 @@ const DropzoneContent = ({ className }: { className?: string }) => {
   const {
     files,
     setFiles,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onUpload,
     loading,
     successes,
@@ -107,6 +108,7 @@ const DropzoneContent = ({ className }: { className?: string }) => {
           >
             {file.type.startsWith('image/') ? (
               <div className="h-10 w-10 rounded border overflow-hidden shrink-0 bg-muted flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={file.preview} alt={file.name} className="object-cover" />
               </div>
             ) : (

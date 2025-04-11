@@ -30,6 +30,7 @@ export function EditProjectForm({ projectUpdated, project }: { projectUpdated: (
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { data, error } = await supabase.from("project").update({
       title: values.title,
       description: values.description,

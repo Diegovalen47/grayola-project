@@ -82,6 +82,7 @@ export function ProjectCard({ project, bucketUrl, userProfile, designers }: Proj
       }
     }
     fetchFiles()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase, project.id, toggleRefresh])
 
   useEffect(() => {
@@ -115,6 +116,7 @@ export function ProjectCard({ project, bucketUrl, userProfile, designers }: Proj
     }
 
     fetchAsignedDesigners()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase, project.id, toggleRefresh])
 
   const handleSelectDesigner = async (designerId: string) => {
@@ -250,6 +252,7 @@ export function ProjectCard({ project, bucketUrl, userProfile, designers }: Proj
                   setSelectedFile(file)
                   setOpenDialog(true)
                 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={file.url} alt={file.name} className= "w-24 h-24" />
                   <p>{file.name}</p>
                 </div>
@@ -284,6 +287,7 @@ export function ProjectCard({ project, bucketUrl, userProfile, designers }: Proj
               <DialogDescription></DialogDescription>
             </DialogHeader>
             <div className="flex flex-col gap-2 items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={selectedFile.url} alt={selectedFile.name} className= "w-72 h-72" />
               <p>{selectedFile.name}</p>
             </div>

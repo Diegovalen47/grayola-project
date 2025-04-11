@@ -6,6 +6,7 @@ export default async function Register() {
 
   const supabase = await createClient()
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, error } = await supabase.auth.getUser()
 
   if (data?.user) {

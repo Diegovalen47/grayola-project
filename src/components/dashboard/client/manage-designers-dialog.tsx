@@ -18,6 +18,7 @@ export function ManageDesignersDialog({ open, setOpen, projectId, designers }: {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [toggleRefresh, setToggleRefresh] = useState(false)
   const supabase = createClient()
 

@@ -48,6 +48,7 @@ export function EditProjectFiles({ projectId, filesUploaded, files, toggleRefres
 
   const handleDeleteFile = async (fileName: string) => {
     setIsDeleting(true)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { data, error } = await supabase.storage.from('files').remove([`projects/${projectId}/${fileName}`])
     if (error) {
       console.log("Error deleting file", error)
@@ -65,6 +66,7 @@ export function EditProjectFiles({ projectId, filesUploaded, files, toggleRefres
       <div className="flex flex-col gap-4">
         {files.map((file) => (
           <div key={file.name} className="flex flex-row items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={file.url} alt={file.name} className="w-10 h-10 rounded-md" />
             <p>{file.name}</p>
             <Button variant="outline" color="destructive" className="w-fit px-8 bg-transparent text-destructive border-none shadow-none hover:bg-destructive/10 hover:traslate-y-0" onClick={() => {

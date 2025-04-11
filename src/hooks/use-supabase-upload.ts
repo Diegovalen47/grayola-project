@@ -151,6 +151,7 @@ const useSupabaseUpload = (options: UseSupabaseUploadOptions) => {
     setSuccesses(newSuccesses)
 
     setLoading(false)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files, path, bucketName, errors, successes])
 
   useEffect(() => {
@@ -172,6 +173,7 @@ const useSupabaseUpload = (options: UseSupabaseUploadOptions) => {
         setFiles(newFiles)
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files.length, setFiles, maxFiles])
 
   return {
